@@ -5,4 +5,10 @@ VotaPrato::Application.routes.draw do
   match 'inicio', controller: 'restaurantes', action: 'index', via: 'get'
 end
 
+VotaPrato::Application.routes.draw do
+  match 'ola' => 'ola_mundo#index', via: 'get'
+end
+
+resources :restaurantes
+
 end
