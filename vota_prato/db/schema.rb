@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507023845) do
+ActiveRecord::Schema.define(version: 20170508210729) do
+
+  create_table "clientes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "nome", limit: 80
+    t.integer "idade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pratos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "nome", limit: 80
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pratos_restaurantes", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "prato_id"
+    t.integer "restaurante_id"
+  end
+
+  create_table "qualificacoes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float "nota", limit: 24
+    t.float "valor_gasto", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "cliente_id"
+    t.integer "restaurante_id"
+  end
+
+  create_table "receitas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "conteudo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "prato_id"
+  end
 
   create_table "restaurantes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nome", limit: 80
